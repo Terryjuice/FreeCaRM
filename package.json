@@ -1,0 +1,24 @@
+{
+  "name": "freecarm",
+  "version": "1.0.0",
+  "description": "AI-powered vehicle inspection and damage assessment platform",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "mobile"
+  ],
+  "scripts": {
+    "backend": "cd backend && npm run dev",
+    "mobile": "cd mobile && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../mobile && npm install"
+  },
+  "keywords": [
+    "vehicle",
+    "inspection",
+    "ai",
+    "damage-detection",
+    "tchek"
+  ],
+  "author": "",
+  "license": "MIT"
+}

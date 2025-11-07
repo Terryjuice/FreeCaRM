@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+*/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build
+dist/
+build/
+*.log
+
+# React Native
+mobile/.expo/
+mobile/.expo-shared/
+mobile/ios/Pods/
+mobile/ios/build/
+mobile/android/app/build/
+mobile/android/.gradle/
+
+# Backend
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# AI Models
+backend/models/*.h5
+backend/models/*.pb
+backend/models/*.onnx
+!backend/models/.gitkeep
+
+# Database
+*.sqlite
+*.db
+
+# Testing
+coverage/
+.nyc_output/
