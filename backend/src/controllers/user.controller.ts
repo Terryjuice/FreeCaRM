@@ -35,7 +35,7 @@ export const getUserById = async (req: AuthRequest, res: Response): Promise<void
     const requestingUser = req.user;
 
     // Users can only view their own profile unless they're admin
-    if (requestingUser?.role !== 'admin' && requestingUser?._id.toString() !== id) {
+    if (requestingUser?.role !== 'admin' && (requestingUser?._id as any).toString() !== id) {
       res.status(403).json({ error: 'Access denied' });
       return;
     }
@@ -60,7 +60,7 @@ export const updateUser = async (req: AuthRequest, res: Response): Promise<void>
     const requestingUser = req.user;
 
     // Users can only update their own profile unless they're admin
-    if (requestingUser?.role !== 'admin' && requestingUser?._id.toString() !== id) {
+    if (requestingUser?.role !== 'admin' && (requestingUser?._id as any).toString() !== id) {
       res.status(403).json({ error: 'Access denied' });
       return;
     }

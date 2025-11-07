@@ -16,6 +16,7 @@ import NewInspectionScreen from '../screens/Inspections/NewInspectionScreen';
 import CameraScreen from '../screens/Camera/CameraScreen';
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import ReportScreen from '../screens/Reports/ReportScreen';
+import SettingsScreen from '../screens/Settings/SettingsScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -75,6 +76,7 @@ const AppNavigator = () => {
           <Stack.Screen name="InspectionDetail" component={InspectionDetailScreen} options={{ title: 'Inspection' }} />
           <Stack.Screen name="Camera" component={CameraScreen} options={{ title: 'Take Photo' }} />
           <Stack.Screen name="Report" component={ReportScreen} options={{ title: 'Report' }} />
+          <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />
         </>
       )}
     </Stack.Navigator>

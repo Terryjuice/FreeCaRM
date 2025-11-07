@@ -85,7 +85,7 @@ export const createManualDamage = async (req: AuthRequest, res: Response): Promi
     await damage.save();
 
     // Update inspection
-    inspection.damages.push(damage._id);
+    inspection.damages.push(damage._id as any);
     inspection.totalEstimatedCost += estimatedCost.total;
     await inspection.save();
 

@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import User from '../models/User.model';
 import { AuthRequest } from '../middleware/auth.middleware';
 import { AppError } from '../middleware/errorHandler';
@@ -25,10 +25,13 @@ export const register = async (req: AuthRequest, res: Response): Promise<void> =
 
     await user.save();
 
+    const signOptions: SignOptions = {
+      expiresIn: process.env.JWT_EXPIRES_IN || '7d'
+    };
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: (user._id as any).toString() },
       process.env.JWT_SECRET || 'secret',
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+      signOptions
     );
 
     res.status(201).json({
@@ -63,10 +66,13 @@ export const login = async (req: AuthRequest, res: Response): Promise<void> => {
       return;
     }
 
+    const signOptions: SignOptions = {
+      expiresIn: process.env.JWT_EXPIRES_IN || '7d'
+    };
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: (user._id as any).toString() },
       process.env.JWT_SECRET || 'secret',
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+      signOptions
     );
 
     res.json({

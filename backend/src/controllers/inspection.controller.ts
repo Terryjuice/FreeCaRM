@@ -1,6 +1,7 @@
 import { Response } from 'express';
 import Inspection from '../models/Inspection.model';
 import Damage from '../models/Damage.model';
+import Settings from '../models/Settings.model';
 import { AuthRequest } from '../middleware/auth.middleware';
 import { DamageDetectionService } from '../services/damageDetection.service';
 import { CostEstimationService } from '../services/costEstimation.service';
@@ -188,6 +189,12 @@ export const analyzeInspectionImages = async (req: AuthRequest, res: Response): 
       return;
     }
 
+    // Load user settings to get Claude API key
+    const settings = await Settings.findOne({ userId }).select('+anthropicApiKey');
+    if (settings?.anthropicApiKey) {
+      damageDetectionService.setClaudeApiKey(settings.anthropicApiKey);
+    }
+
     inspection.status = 'analyzing';
     await inspection.save();
 
@@ -220,7 +227,7 @@ export const analyzeInspectionImages = async (req: AuthRequest, res: Response): 
 
           await damage.save();
           detectedDamages.push(damage);
-          inspection.damages.push(damage._id);
+          inspection.damages.push(damage._id as any);
         }
 
         image.analyzed = true;

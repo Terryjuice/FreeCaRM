@@ -96,7 +96,7 @@ const ProfileScreen = ({ navigation }: any) => {
             title="Settings"
             left={(props) => <List.Icon {...props} icon="cog" />}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
-            onPress={() => Alert.alert('Coming Soon', 'Settings feature coming soon')}
+            onPress={() => navigation.navigate('Settings')}
           />
 
           <List.Item

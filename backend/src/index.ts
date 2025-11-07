@@ -11,6 +11,7 @@ import inspectionRoutes from './routes/inspection.routes';
 import damageRoutes from './routes/damage.routes';
 import reportRoutes from './routes/report.routes';
 import userRoutes from './routes/user.routes';
+import settingsRoutes from './routes/settings.routes';
 
 dotenv.config();
 
@@ -39,6 +40,7 @@ app.use('/api/inspections', inspectionRoutes);
 app.use('/api/damages', damageRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/settings', settingsRoutes);
 
 // Error handling
 app.use(errorHandler);
